@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" />
+<style>
+    th {
+        cursor: pointer;
+        background-color: coral;
+    }
+</style>
+<head>
+    <title>List Of Buckets in the Account</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'Total processing time is: ' + ${totalTime} + ' seconds'" />
+<table id="usersTable" class="w3-table-all">
+ <tr>
+   <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')">Provider Name</th>
+   <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(2)')">Provider ID</th>
+   <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(3)')">Bucket Name</th>
+     <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(4)')">Object Count</th>
+     <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(5)')">Display Size</th>
+     <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(6)')">Last Modified</th>
+ </tr>
+    <tr class="item"  th:each="bucket: ${wbuckets}">
+        <td th:text="${bucket.providerName}" />
+        <td th:text="${bucket.providerId}" />
+        <td th:text="${bucket.name}" />
+        <td th:text="${bucket.objectCount}" />
+        <td th:text="${bucket.displaySize}" />
+        <td th:text="${bucket.lastModified}" />
+    </tr>
+</table>
+</body>
+</html>
